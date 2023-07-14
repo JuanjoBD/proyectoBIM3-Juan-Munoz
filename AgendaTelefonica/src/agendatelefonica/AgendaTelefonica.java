@@ -45,7 +45,8 @@ public class AgendaTelefonica {
     static public void verTodos() {
         for (int i = 0; i < contador; i++) {
             System.out.println("nombre: " + misContactos[i].verNombre());
-            System.out.println("materia: " + misContactos[i].verNumero());
+            System.out.println("numero: " + misContactos[i].verNumero());
+            System.out.println("domicilio: " + misContactos[i].verDomicilio());
             System.out.println("#####################################################");
         }
     }
@@ -84,18 +85,24 @@ public class AgendaTelefonica {
             return "Contacto no encontrado";
         }
     }
-    static public void cambiardatos (){
+
+    static public void cambiardatos() {
         Scanner teclado1 = new Scanner(System.in);
         System.out.println("----------------Que contacto desea modificar?----------------");
-                int n = teclado1.nextInt();
-                System.out.println("-------Nuevo Contacto-------");
-                System.out.println("-Ingrese el nombre del contacto");
-                String nombre = teclado1.nextLine();
-                System.out.println("-Ingrese el numero");
-                String numero = teclado1.nextLine();
-                System.out.println("-Ingrese el domicilio");
-                String domicilio = teclado1.nextLine();
-                misContactos[n+1].modificarNumero(nombre, numero, domicilio);
+        int n = (teclado1.nextInt() - 1);
+        System.out.println("-------Nuevo Contacto-------");
+        System.out.println("-Ingrese el nombre del contacto");
+        String nombre1 = teclado1.nextLine();
+        System.out.println("-Ingrese el numero");
+        String numero1 = teclado1.nextLine();
+        System.out.println("-Ingrese el domicilio");
+        String domicilio1 = teclado1.nextLine();
+        misContactos[n].setNombre(nombre1);
+        misContactos[n].setNumero(numero1);
+        misContactos[n].setDomicilio(domicilio1);
+        System.out.println("-----Datos guardados con exito-----");
+        System.out.println("nombre: " + misContactos[n].verNombre());
+        System.out.println("numero: " + misContactos[n].verNumero());
+        System.out.println("#####################################################");
     }
 }
-

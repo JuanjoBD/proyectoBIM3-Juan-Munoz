@@ -15,10 +15,16 @@ public class Contactos {
     public String verNumero(){
         return this.numero;
     }
-    public void modificarNumero(String nombre,String numero, String domicilio){
+    public String verDomicilio(){
+        return this.domicilio;
+    }
+    public void setNombre(String nombre){
         this.nombre = nombre;
+    }
+    public void setNumero(String numero){
         this.numero = numero;
+    }
+    public void setDomicilio(String domicilio){
         this.domicilio = domicilio;
-        
     }
 }
