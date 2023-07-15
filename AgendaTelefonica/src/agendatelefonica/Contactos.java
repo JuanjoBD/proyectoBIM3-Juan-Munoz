@@ -21,9 +21,6 @@ public class Contactos {
     public void setNombre(String nombre){
         this.nombre = nombre;
     }
-    public void setNumero(String numero){
-        this.numero = numero;
-    }
     public void setDomicilio(String domicilio){
         this.domicilio = domicilio;
     }
