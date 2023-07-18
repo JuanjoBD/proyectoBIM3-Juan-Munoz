@@ -12,7 +12,7 @@ public class AgendaTelefonica {
 
     public static void main(String[] args) {
         int op = 0;
-        while (op != 4) {
+        while (op != 5) {
             System.out.println("---------------------Menu principal---------------------");
             System.out.println("1. Guardar Contacto");
             System.out.println("2. Ver Contactos");
