@@ -7,7 +7,9 @@ public class AgendaTelefonica {
     static Contactos misContactos[] = new Contactos[15];
     static int contador = 0;
     static Scanner teclado = new Scanner(System.in);
-//prueba git push desde github
+    static int n;
+    static String nombre1, domicilio1;
+
     public static void main(String[] args) {
         int op = 0;
         while (op != 4) {
@@ -15,14 +17,14 @@ public class AgendaTelefonica {
             System.out.println("1. Guardar Contacto");
             System.out.println("2. Ver Contactos");
             System.out.println("3. Buscar Contacto");
-            System.out.println("4. modificcar Contacto");
+            System.out.println("4. Modificar Contacto");
             System.out.println("5. Salir");
             System.out.println("Ingrese el numero de opcion");
             op = teclado.nextInt();
             if (op == 1) {
                 GuardarContacto();
             } else if (op == 2) {
-                System.out.println("--Los datos del contacto son--");
+                System.out.println("#####################Contactos Guardados#####################");
                 verTodos();
             } else if (op == 3) {
                 System.out.println("--Buscar Contacto--");
@@ -32,6 +34,11 @@ public class AgendaTelefonica {
                 System.out.println(verContacto(nombre));
             } else if (op == 4) {
                 cambiardatos();
+                System.out.println("-----Datos guardados con exito-----");
+                System.out.println("nombre: " + misContactos[n].verNombre());
+                System.out.println("numero: " + misContactos[n].verNumero());
+                System.out.println("domicilio: " + misContactos[n].verDomicilio());
+                System.out.println("#####################################################");
             } else if (op == 5) {
                 System.out.println("--Programa finalizado--");
                 break;
@@ -43,6 +50,7 @@ public class AgendaTelefonica {
 
     static public void verTodos() {
         for (int i = 0; i < contador; i++) {
+            System.out.println("----------Contacto: " + (i+1) + "----------");
             System.out.println("nombre: " + misContactos[i].verNombre());
             System.out.println("numero: " + misContactos[i].verNumero());
             System.out.println("domicilio: " + misContactos[i].verDomicilio());
@@ -65,42 +73,37 @@ public class AgendaTelefonica {
             String domicilio = entrada.nextLine();
             misContactos[contador] = new Contactos(nombre, numero, domicilio);
             contador++;
+            System.out.println("Contactos Guardados: " + contador);
         }
     }
-//ggjfdg
-    //hjghj
 
     static public String verContacto(String nombre) {
         int posicion = -1;
         for (int i = 0; i < 15; i++) {
-            if (misContactos[i].verNombre().equals(nombre)&& misContactos != null) {
-                posicion = i;
-                break;
+            if (misContactos [i] != null) {
+                if (misContactos[i].verNombre().equals(nombre)) {
+                    posicion = i;
+                    break;
+                }
             }
         }
         if (posicion != -1) {
-            return "Numero: " + misContactos[posicion].verNumero() + "\nDomicilio: "+ misContactos[posicion].verDomicilio();
+            return "Contacto numero: " + contador +"\nNumero: " + misContactos[posicion].verNumero() + "\nDomicilio: " + misContactos[posicion].verDomicilio();
         } else {
             return "Contacto no encontrado";
         }
     }
 
     static public void cambiardatos() {
-        String nombre1, domicilio1;
+        Scanner teclado1 = new Scanner(System.in);
         System.out.println("----------------Que contacto desea modificar?----------------");
-        int n = (teclado.nextInt() - 1);
-        System.out.println("-------Nuevo Contacto-------");
+        n = (teclado.nextInt() - 1);
+        System.out.println("----------------------------------------------");
         System.out.println("-Ingrese el nombre");
-        nombre1 = teclado.nextLine();
-        nombre1 = teclado.nextLine();
+        nombre1 = teclado1.nextLine();
         System.out.println("-Ingrese el domicilio");
-        domicilio1 = teclado.nextLine();
+        domicilio1 = teclado1.nextLine();
         misContactos[n].setNombre(nombre1);
         misContactos[n].setDomicilio(domicilio1);
-        System.out.println("-----Datos guardados con exito-----");
-        System.out.println("nombre: " + misContactos[n].verNombre());
-        System.out.println("numero: " + misContactos[n].verNumero());
-        System.out.println("domicilio: " + misContactos[n].verDomicilio());
-        System.out.println("#####################################################");
     }
 }
