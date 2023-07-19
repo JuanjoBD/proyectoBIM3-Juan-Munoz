@@ -33,8 +33,11 @@ public class AgendaTelefonica {
                 String nombre = entrada.nextLine();
                 System.out.println(verContacto(nombre));
             } else if (op == 4) {
-                cambiardatos();
-                System.out.println("-----Datos guardados con exito-----");
+                System.out.println("--Modificar contacto--");
+                System.out.println("Ingrese el numero del contacto que desea modificar: ");
+                Scanner entrada = new Scanner(System.in);
+                String numero = entrada.nextLine();
+                System.out.println(cambiardatos(numero));
                 System.out.println("nombre: " + misContactos[n].verNombre());
                 System.out.println("numero: " + misContactos[n].verNumero());
                 System.out.println("domicilio: " + misContactos[n].verDomicilio());
@@ -88,22 +91,34 @@ public class AgendaTelefonica {
             }
         }
         if (posicion != -1) {
-            return "Contacto numero: " + contador +"\nNumero: " + misContactos[posicion].verNumero() + "\nDomicilio: " + misContactos[posicion].verDomicilio();
+            return "Contacto numero: " + (contador-1) +"\nNumero: " + misContactos[posicion].verNumero() + "\nDomicilio: " + misContactos[posicion].verDomicilio();
         } else {
             return "Contacto no encontrado";
         }
     }
 
-    static public void cambiardatos() {
-        Scanner teclado1 = new Scanner(System.in);
-        System.out.println("----------------Que contacto desea modificar?----------------");
-        n = (teclado.nextInt() - 1);
-        System.out.println("----------------------------------------------");
+    static public String cambiardatos(String numero) {
+        Scanner teclado1=new Scanner (System.in);
+        int posicion = -1;
+        for (int i = 0; i < 15; i++) {
+            if (misContactos [i] != null) {
+                if (misContactos[i].verNumero().equals(numero)) {
+                    posicion = i;
+                    break;
+                }
+            }
+        }
+        if (posicion != -1) {
+            System.out.println("----------------------------------------------");
         System.out.println("-Ingrese el nombre");
         nombre1 = teclado1.nextLine();
         System.out.println("-Ingrese el domicilio");
         domicilio1 = teclado1.nextLine();
         misContactos[n].setNombre(nombre1);
         misContactos[n].setDomicilio(domicilio1);
+        return "-----Datos guardados con exito-----";
+        } else {
+            return "Contacto no encontrado";
+        }
     }
 }
