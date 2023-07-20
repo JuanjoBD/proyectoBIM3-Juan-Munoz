@@ -3,11 +3,11 @@ package agendatelefonica;
 import java.util.Scanner;
 
 public class AgendaTelefonica {
-//Objetos globales
+
     static Contactos misContactos[] = new Contactos[15];
     static int contador = 0;
     static Scanner teclado = new Scanner(System.in);
-    static int n;
+    static int n ;
     static String nombre1, domicilio1;
 
     public static void main(String[] args) {
@@ -104,6 +104,7 @@ public class AgendaTelefonica {
             if (misContactos [i] != null) {
                 if (misContactos[i].verNumero().equals(numero)) {
                     posicion = i;
+                    n=i;
                     break;
                 }
             }
