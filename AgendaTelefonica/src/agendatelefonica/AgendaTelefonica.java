@@ -3,7 +3,7 @@ package agendatelefonica;
 import java.util.Scanner;
 
 public class AgendaTelefonica {
-
+//Objetos globales
     static Contactos misContactos[] = new Contactos[15];
     static int contador = 0;
     static Scanner teclado = new Scanner(System.in);
